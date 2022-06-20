@@ -19,7 +19,6 @@ RUN set -e \
         --with github.com/porech/caddy-maxmind-geolocation \
         --with github.com/caddyserver/transform-encoder \
         --with github.com/caddyserver/replace-response \
-        --with github.com/imgk/caddy-trojan
     
 
 FROM alpine:3.13 AS dist
