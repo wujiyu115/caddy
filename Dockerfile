@@ -1,4 +1,4 @@
-FROM golang:1.17-alpine3.15 AS builder
+FROM caddy:builder AS builder
 
 RUN set -e \
     && apk upgrade \
@@ -20,7 +20,7 @@ RUN set -e \
         --with github.com/caddyserver/transform-encoder \
         --with github.com/caddyserver/replace-response
 
-FROM alpine:3.13 AS dist
+FROM caddy:latest AS dist
 
 LABEL maintainer="mritd <mritd@linux.com>"
 
