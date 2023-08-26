@@ -19,7 +19,7 @@ RUN set -e \
         --with github.com/caddyserver/transform-encoder \
         --with github.com/caddyserver/replace-response
 
-FROM caddy:latest AS dist
+FROM alpine:3.13 AS dist
 
 LABEL maintainer="mritd <mritd@linux.com>"
 
