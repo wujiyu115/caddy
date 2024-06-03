@@ -17,7 +17,8 @@ RUN set -e \
         --with github.com/kirsch33/realip \
         --with github.com/porech/caddy-maxmind-geolocation \
         --with github.com/caddyserver/transform-encoder \
-        --with github.com/caddyserver/replace-response
+        --with github.com/caddyserver/replace-response \
+        --with github.com/mholt/caddy-webdav
 
 FROM alpine:3.13 AS dist
 
