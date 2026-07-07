@@ -9,7 +9,6 @@ RUN set -e \
         --with github.com/caddy-dns/route53 \
         --with github.com/caddy-dns/cloudflare \
         --with github.com/caddy-dns/alidns \
-        --with github.com/caddy-dns/dnspod \
         --with github.com/caddy-dns/gandi \
         --with github.com/abiosoft/caddy-exec \
         --with github.com/greenpau/caddy-trace \
