@@ -19,7 +19,7 @@ RUN set -e \
         --with github.com/caddyserver/replace-response \
         --with github.com/mholt/caddy-webdav
 
-FROM alpine:3.13 AS dist
+FROM alpine:3.24 AS dist
 
 LABEL maintainer="mritd <mritd@linux.com>"
 
