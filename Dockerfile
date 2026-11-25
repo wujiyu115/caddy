@@ -24,10 +24,10 @@ FROM alpine:3.24 AS dist
 LABEL maintainer="mritd <mritd@linux.com>"
 
 # See https://caddyserver.com/docs/conventions#file-locations for details
-ENV XDG_CONFIG_HOME /config
-ENV XDG_DATA_HOME /data
+ENV XDG_CONFIG_HOME=/config
+ENV XDG_DATA_HOME=/data
 
-ENV TZ Asia/Shanghai
+ENV TZ=Asia/Shanghai
 
 COPY --from=builder /caddy /usr/bin/caddy
 ADD https://raw.githubusercontent.com/caddyserver/dist/master/config/Caddyfile /etc/caddy/Caddyfile
@@ -36,7 +36,8 @@ ADD https://raw.githubusercontent.com/caddyserver/dist/master/welcome/index.html
 # set up nsswitch.conf for Go's "netgo" implementation
 # - https://github.com/golang/go/blob/go1.9.1/src/net/conf.go#L194-L275
 # - docker run --rm debian:stretch grep '^hosts:' /etc/nsswitch.conf
-RUN [ ! -e /etc/nsswitch.conf ] && echo 'hosts: files dns' > /etc/nsswitch.conf
+# alpine 3.24 起已自带 /etc/nsswitch.conf（含 hosts: files dns），这里保持幂等
+RUN [ -e /etc/nsswitch.conf ] || echo 'hosts: files dns' > /etc/nsswitch.conf
 
 RUN set -e \
     && apk upgrade \
